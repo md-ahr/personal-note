@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useReducer } from 'react';
+import Header from './components/Header';
+import MainContent from './components/MainContent';
+import GlobalStyle from './styles/GlobalStyle';
+import reducer from './reducer/noteReducer';
+import { NoteContextState, NoteContextDispatch, initialState } from './context/noteContext';
 
 function App() {
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NoteContextState.Provider value={state}>
+      <NoteContextDispatch.Provider value={dispatch}>
+        <GlobalStyle />
+        <div className="container">
+          <Header />
+          <MainContent />
+        </div>
+      </NoteContextDispatch.Provider>
+    </NoteContextState.Provider>
   );
+
 }
 
 export default App;
