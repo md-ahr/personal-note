@@ -1,12 +1,19 @@
 import { FaPlus } from 'react-icons/fa';
-import { Button } from '../styles/Button';
-import { AddNote } from '../styles/Note';
+import { CardAddNote } from '../styles/Note';
+import { useGlobalDispatch } from '../context/noteContext';
 
 const AddButton = () => {
+
+    const dispatch = useGlobalDispatch();
+
+    const handleAddNoteButton = () => {
+        dispatch({ type: 'trigger-add', value: true });
+    };
+
     return (
-        <AddNote>
-            <Button bgColor="#4ebe7d" bgHover="#34b46a" padding="0.75em 1.25em" className="btn"><FaPlus /></Button>
-        </AddNote>
+        <CardAddNote className="card display-6" onClick={handleAddNoteButton}>
+            <FaPlus className="mb-3"/> Add Note
+        </CardAddNote>
     );
 };
 

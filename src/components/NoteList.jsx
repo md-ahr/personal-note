@@ -1,19 +1,20 @@
+import AddButton from './AddButton';
 import AddNote from './AddNote';
 import Note from './Note';
 import { NoteWrapper } from '../styles/Note';
+import { useGlobalState } from '../context/noteContext';
 
 const NoteList = () => {
 
-    const nostLists = JSON.parse(localStorage.getItem('notes'));
-
-    console.log({nostLists});
+    const { isAdding, notes } = useGlobalState();
 
     return (
         <NoteWrapper>
-            <AddNote />
-            {nostLists.map(note => (
-                <Note key={note.id} note={note.text} />
-            ))}
+            {!isAdding && <AddButton />}
+            {isAdding && <AddNote />}
+            {notes.length ? (notes.reverse().map(note => (
+                <Note key={note.id} note={note} />
+            ))) : ''}
         </NoteWrapper>
     );
 

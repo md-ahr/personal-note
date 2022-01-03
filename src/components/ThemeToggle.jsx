@@ -7,7 +7,7 @@ const ThemeToggle = () => {
     const dispatch = useGlobalDispatch();
 
     const handleSwitch = (e) => {
-        if (!e.target.checked) {
+        if (e.target.checked) {
             dispatch({ type: 'theme', mode: 'dark' });
         } else {
             dispatch({ type: 'theme', mode: 'light' });

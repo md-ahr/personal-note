@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
 export const TopBarWrapper = styled.div`
-    width: 50%;
+    width: 100%;
     margin-inline: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+    @media screen and (min-width: 768px) {
+        width: 75%;
+    }
+
+    @media screen and (min-width: 992px) {
+        width: 50%;
+    }
 `;
 
 export const SearchWrapper = styled.div`
@@ -13,6 +18,7 @@ export const SearchWrapper = styled.div`
     position: relative;
 
     .icon-search {
+        color: #232323;
         opacity: 0.6;
         position: absolute;
         top: 50%;

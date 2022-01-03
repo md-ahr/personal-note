@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const HeaderSection = styled.header`
     margin-top: 2.25em;
-    padding-bottom: 0.5em;
+    padding-bottom: 1.25em;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,8 +10,9 @@ export const HeaderSection = styled.header`
 `;
 
 export const H1 = styled.h1`
+    margin-bottom: 0;
     font-size: 1.75rem;
-    color: #424653;
+    color: ${props => props.theme.color};
 `;
 
 export const ToggleWrapper = styled.div`
